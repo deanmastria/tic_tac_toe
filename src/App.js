@@ -8,12 +8,10 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
+function Board({ xIsNext, squares, onPlay }) {
+ 
   function handleClick(i) {
-    if (squares[i] || winner) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
     const nextSquares = squares.slice();
@@ -22,14 +20,14 @@ export default function Board() {
     } else {
       nextSquares[i] = 'O';
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onplay(nextSquares);
+  
   }
 
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner' + winner;
+    status = 'Winner: ' + winner;
   } else {
     status = 'Next player:'+ (xIsNext? 'X' : 'O');
   }
@@ -45,7 +43,7 @@ export default function Board() {
       <div className="board-row">
         <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
         <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)}/>
+        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
       </div>
       <div className="board-row">
         <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
@@ -53,6 +51,28 @@ export default function Board() {
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
     </>
+  );
+}
+
+export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1];
+
+  function handlePlay(nextSquares) {
+      setHistory([...history, nextSquares]);
+      setXIsNext(!xIsNext);
+  }
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+          <ol>{/*todo*/}</ol>
+      </div>
+    </div>
   );
 }
 
