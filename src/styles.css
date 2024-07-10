@@ -1,32 +1,43 @@
+/* Apply box-sizing to all elements */
 * {
   box-sizing: border-box;
 }
 
+/* Set default font family and margin for the body */
 body {
-  font-family: sans-serif;
-  margin: 20px;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
   padding: 0;
+  background: #f5f5f5; /* Light background color for the page */
 }
 
+/* Remove top margin for all heading elements */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
-h1 { font-size: 22px; }
-h2 { font-size: 20px; }
-h3 { font-size: 18px; }
-h4 { font-size: 16px; }
-h5 { font-size: 14px; }
-h6 { font-size: 12px; }
+/* Set specific font sizes for heading elements */
+h1 { font-size: 24px; }
+h2 { font-size: 22px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+h6 { font-size: 14px; }
 
+/* Style for code elements */
 code {
   font-size: 1.2em;
+  background-color: #e0e0e0; /* Light background color for code blocks */
+  padding: 2px 4px; /* Add some padding */
+  border-radius: 4px; /* Rounded corners */
 }
 
+/* Add padding to unordered lists */
 ul {
   padding-inline-start: 20px;
 }
 
+/* Style for the squares in the Tic-Tac-Toe board */
 .square {
   background: #fff;
   border: 2px solid #999;
@@ -42,44 +53,94 @@ ul {
   text-align: center;
   width: 50px;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s; /* Smooth transition for background and transform */
 }
 
+/* Add hover effect for squares */
 .square:hover {
-  background-color: #f0f0f0;
+  background-color: #d1e7dd; /* Light green background on hover */
+  transform: scale(1.1); /* Slightly enlarge the square on hover */
 }
 
+/* Clear floats for board rows */
 .board-row:after {
   clear: both;
   content: '';
   display: table;
 }
 
+/* Style for the game status message */
 .status {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 24px;
+  font-weight: bold;
+  color: #007bff; /* Blue color for the status message */
 }
 
+/* Flexbox layout for the game container */
 .game {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
 }
 
+/* Style for the game info section */
 .game-info {
-  margin-left: 20px;
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Style for list group items */
 .list-group-item {
-  height: 40px;
+  height: 30px;
   width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   margin-bottom: 5px;
+  background: #f8f9fa; /* Light gray background for list items */
+  border-radius: 5px; /* Rounded corners */
+  transition: background 0.3s ease, box-shadow 0.3s; /* Smooth transition for background and box shadow */
+}
+
+/* Add hover effect for list group items */
+.list-group-item:hover {
+  background: #e9ecef; /* Slightly darker background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Style for buttons in the game */
+button {
+  transition: background 0.3s ease, transform 0.2s; /* Smooth transition for background and transform */
+}
+
+/* Add hover effect for buttons */
+button:hover {
+  background: #0056b3; /* Darker blue background on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Style for the Tic-Tac-Toe title */
+.title {
+  font-family: 'Pacifico', cursive; /* Use the Pacifico font */
+  font-size: 36px; /* Larger font size */
+  color: #ff6347; /* Tomato color */
+  text-align: center; /* Center align the text */
+  margin: 90px 0 90px 0; /* Reduced space above and below the title */
+}
+
+/* Container for the entire game */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background: #f5f5f5; /* Light background color */
+  padding-top: 20px; /* Add some padding to the top */
 }

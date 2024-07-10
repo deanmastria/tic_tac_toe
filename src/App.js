@@ -1,6 +1,6 @@
-// Import necessary modules from React and React-Bootstrap
-import React, { useState } from "react"; // Import React and the useState hook
-import { Button, Container, Row, Col, ListGroup, ListGroupItem, ButtonGroup } from "react-bootstrap"; // Import Bootstrap components
+import React, { useState } from 'react';
+import { Button, Container, Row, Col, ListGroup, ListGroupItem, ButtonGroup } from 'react-bootstrap';
+import './styles.css'; // Ensure this path is correct
 
 // Define the Square component, which represents each square in the Tic-Tac-Toe board
 function Square({ value, onSquareClick, highlight }) {
@@ -135,21 +135,24 @@ export default function Game() {
 
   // Render the game board and the move history
   return (
-    <Container className="game mt-3"> {/* Bootstrap container for layout */}
-      <Row className="flex-nowrap"> {/* Bootstrap row for layout */}
-        <Col md={8} className="game-board"> {/* Bootstrap column for the game board */}
-          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} /> {/* Render the game board */}
-        </Col>
-        <Col md={4} className="game-info"> {/* Bootstrap column for the game info */}
-          <ButtonGroup className="mb-3"> {/* Button group for sort toggle */}
-            <Button variant="primary" onClick={handleSortToggle}> {/* Button to toggle sort order */}
-              {isAscending ? 'Sort Descending' : 'Sort Ascending'} {/* Button label */}
-            </Button>
-          </ButtonGroup>
-          <ListGroup as="ol">{moves}</ListGroup> {/* List group for the move history */}
-        </Col>
-      </Row>
-    </Container>
+    <div className="game-container">
+      <div className="title">Tic-Tac-Toe</div> {/* Add the title here */}
+      <Container className="game mt-3"> {/* Bootstrap container for layout */}
+        <Row className="flex-nowrap"> {/* Bootstrap row for layout */}
+          <Col md={8} className="game-board"> {/* Bootstrap column for the game board */}
+            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} /> {/* Render the game board */}
+          </Col>
+          <Col md={4} className="game-info"> {/* Bootstrap column for the game info */}
+            <ButtonGroup className="mb-3"> {/* Button group for sort toggle */}
+              <Button variant="primary" onClick={handleSortToggle}> {/* Button to toggle sort order */}
+                {isAscending ? 'Sort Descending' : 'Sort Ascending'} {/* Button label */}
+              </Button>
+            </ButtonGroup>
+            <ListGroup as="ol">{moves}</ListGroup> {/* List group for the move history */}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
